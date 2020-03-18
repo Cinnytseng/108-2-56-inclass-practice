@@ -1,0 +1,26 @@
+---
+title: '20200318'
+author: "cinny"
+date: "2020/3/18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##package
+```{r}
+library(googlesheets4)
+library(dplyr)
+```
+
+```{r}
+a <- 2
+a = 2 # = 與 <-同義
+```
+
+```{r}
+3 -> b
+```
+
