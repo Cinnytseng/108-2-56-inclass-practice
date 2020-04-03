@@ -1,0 +1,48 @@
+---
+title: '0403'
+author: "cinny"
+date: "4/3/2020"
+output: html_document
+---
+
+
+
+```{r}
+#1081
+course1_1081<-
+list(
+name="個體經濟學",
+teacher="Alice",
+grade=85
+)
+course2_1081<-
+list(
+name="總體經濟學",
+teacher="Mark",
+grade=78
+)
+`108-1修課記錄`<-
+list(
+course1_1081,
+course2_1081
+)
+
+#1082
+course1_1082<- 
+list(
+name="作業研究",
+teacher="Jason",
+grade=90
+)
+`108-2修課記錄`<-
+list(
+course1_1082
+)
+
+#整合兩學期
+`每學期修課記錄`<-list(
+`108-1`=`108-1修課記錄`,
+`108-2`=`108-2修課記錄`
+)
+```
+
