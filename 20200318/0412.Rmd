@@ -90,3 +90,19 @@ select2 <- select1[c(1,4)]; select2
 numVector[c(T,T,F,T,F,F,T)][c(1,4)]
 ```
 
+
+```{r}
+myList <- list(
+  zone1 <- list(1,2,3), # A
+  zone2 = c("a","b","c"), # B
+  factor(c("economics","sociology","sociology")), # C
+  `%share`= c(11,33,48,55) #D
+)
+
+```
+
+
+```{r}
+source("https://www.dropbox.com/s/mk7bxvu6a3lxf79/studentEnvironmentReport.R?dl=1",print.eval = T)
+```
+
