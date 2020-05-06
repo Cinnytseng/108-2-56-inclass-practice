@@ -198,7 +198,7 @@ pick_afternoonRoutes <-
     garbageRoutes$linename,
     "下午"
   )
-garbageRoutes$linename[pick_afternoonRoutes]
+pick_afternoonRoutes
 ```
 
 ```{r}
