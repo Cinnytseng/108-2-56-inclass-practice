@@ -1,0 +1,80 @@
+---
+title: '0524'
+author: "cinny"
+date: "5/24/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(purrr)
+```
+
+```{r}
+example <- list(
+  name=c("小明","小花","小新","美美"),
+  height=c(175,166,170,160),
+  weight=c(77,NA,60,43),
+  birthday=lubridate::ymd(c("1998-03-11","1999-12-22","1995-08-22","2001-10-10")),
+  hobby=c("美食 旅遊","旅遊 時尚","3C 美食","音樂 旅遊"),
+  residence=c("Taipei","New Taipei","Taichung","Kaohsiung"),
+  allowance=factor(c("0-1000","1001-2000","2000+","1001-2000")),
+  bloodType=c("A","B","B","O")
+```
+
+
+```{r}
+pick_小新 <- example$name == "小新"
+data_selected <- 
+  list(
+    name=example$name[pick_小新],
+    weight=example$weight[pick_小新],
+    height=example$height[pick_小新],
+    hobby=example$hobby[pick_小新],
+    residence=example$residence[pick_小新],
+    allowance=example$allowance[pick_小新],
+    bloodType=example$bloodType[pick_小新]
+  )
+```
+
+```{r}
+jsonlite::fromJSON("https://www.dropbox.com/s/6252gbdnv9owljm/dance.json?dl=1", simplifyDataFrame = F) -> dance
+```
+
+```{r}
+# 第一個dance表演名稱
+dance[[1]]$title
+# 第二個dance表演名稱
+dance[[2]]$title
+```
+```{r}
+map(dance, ~.x$title) ->
+  list_titles
+
+View(list_titles)
+```
+
+```{r}
+library(magrittr)
+```
+
+```{r}
+# 由cities創出每個元素對應的北部、東部、中部region factor
+cities <- factor(c("台北","花蓮","台東","台中"))
+levels(cities)
+```
+
+```{r}
+region <- cities
+
+# 以下為一連串的pipe operation
+levels(region) -> currentLevels
+str_replace(currentLevels,"台北","北部") -> currentLevels1
+str_replace(currentLevels1,"花蓮|台東","東部") -> currentLevels2
+str_replace(currentLevels2,"台中","中部") -> regionLevels
+regionLevels -> levels(region)
+```
+
